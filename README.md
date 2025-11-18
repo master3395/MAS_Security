@@ -30,6 +30,20 @@ Complete Vulnerability Disclosure Policy (VDP) and Security Acknowledgments syst
 - **Honeypot Protection** - Bot detection via hidden honeypot fields
 - **Dynamic Configuration** - Automatically detects domain and admin email settings
 
+## Screenshots
+
+### Vulnerability Disclosure Policy
+
+![Vulnerability Disclosure Policy Page](images/vulnerability-disclosure.png)
+
+The VDP page provides a secure form for security researchers to responsibly report vulnerabilities. Features include CSRF protection, rate limiting, and automatic email notifications.
+
+### Security Acknowledgments
+
+![Security Acknowledgments Page](images/security-acknowledgments.png)
+
+The acknowledgments page publicly recognizes security researchers who have helped improve the security of the website through responsible disclosure.
+
 ## Documentation
 
 Navigate to the appropriate guide for detailed information:
