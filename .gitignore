@@ -1,0 +1,88 @@
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Temporary Files
+*.tmp
+*.temp
+*.log
+*.cache
+*.bak
+*.backup
+
+# PHP
+*.php~
+composer.lock
+vendor/
+
+# Node (if used for build tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Build artifacts
+dist/
+build/
+*.min.js
+*.min.css
+
+# Environment files (if any)
+.env
+.env.local
+.env.*.local
+
+# CMSMS specific (if extracted module files exist)
+# Uncomment if you add extracted module files to repo
+# modules/MAS_Security/
+
+# Test files (if not in Test folder)
+# Uncomment if you want to ignore test files
+# test_*.php
+# *_test.php
+
+# Documentation build (if using docs generators)
+docs/_build/
+site/
+
+# IDE and editor
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# Archives (keep source, ignore generated)
+*.zip
+*.tar
+*.tar.gz
+*.rar
+# Note: MAS_Security.zip should be committed, so we don't ignore all zips
+# Only ignore if you have other zip files you don't want
+
+# Local configuration
+config.local.php
+settings.local.php
+
+# Logs directory (if you create one)
+logs/
+*.log
+
+# Temporary uploads (if any)
+uploads/temp/
+

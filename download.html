@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download MAS Security Module</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .download-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.2em;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 20px 0;
+            display: inline-block;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        .download-button:active {
+            transform: translateY(0);
+        }
+        
+        .download-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .files-list {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .file-item {
+            padding: 12px;
+            margin: 8px 0;
+            background: white;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .file-name {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .file-size {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        
+        .info {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .info a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .info a:hover {
+            text-decoration: underline;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            .download-button {
+                padding: 15px 30px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MAS Security Module</h1>
+        <p class="subtitle">Download Installation Files</p>
+        
+        <div class="files-list">
+            <div class="file-item">
+                <span class="file-name">MAS_Security.zip</span>
+                <span class="file-size">Module Package</span>
+            </div>
+            <div class="file-item">
+                <span class="file-name">MAS_Security-1.0.0.xml</span>
+                <span class="file-size">Module Definition</span>
+            </div>
+        </div>
+        
+        <button class="download-button" id="downloadBtn" onclick="downloadFiles()">
+            Download Both Files
+        </button>
+        
+        <div class="status" id="status"></div>
+        
+        <div class="info">
+            <p><strong>Installation:</strong> Upload the XML file via CMSMS Module Manager</p>
+            <p><strong>Documentation:</strong> <a href="guides/installation.md">View Installation Guide</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/yourusername/MAS_Security" target="_blank">View Repository</a></p>
+        </div>
+    </div>
+    
+    <script>
+        // File URLs - Update these to match your actual file locations
+        const files = [
+            {
+                name: 'MAS_Security.zip',
+                url: 'MAS_Security.zip'
+            },
+            {
+                name: 'MAS_Security-1.0.0.xml',
+                url: 'MAS_Security-1.0.0.xml'
+            }
+        ];
+        
+        function downloadFile(url, filename) {
+            return new Promise((resolve, reject) => {
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = filename;
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                
+                // Trigger download
+                link.click();
+                
+                // Clean up
+                setTimeout(() => {
+                    document.body.removeChild(link);
+                    resolve();
+                }, 100);
+            });
+        }
+        
+        async function downloadFiles() {
+            const btn = document.getElementById('downloadBtn');
+            const status = document.getElementById('status');
+            
+            // Disable button and show loading
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner"></span>Downloading...';
+            status.className = 'status';
+            status.textContent = '';
+            
+            try {
+                // Download files sequentially with small delay
+                for (let i = 0; i < files.length; i++) {
+                    await downloadFile(files[i].url, files[i].name);
+                    
+                    // Small delay between downloads to avoid browser blocking
+                    if (i < files.length - 1) {
+                        await new Promise(resolve => setTimeout(resolve, 300));
+                    }
+                }
+                
+                // Success message
+                status.className = 'status success';
+                status.textContent = '✓ Both files downloaded successfully!';
+                
+                // Reset button after delay
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.textContent = 'Download Both Files';
+                }, 2000);
+                
+            } catch (error) {
+                // Error message
+                status.className = 'status error';
+                status.textContent = '✗ Error downloading files. Please try downloading individually from the repository.';
+                
+                // Reset button
+                btn.disabled = false;
+                btn.textContent = 'Download Both Files';
+                
+                console.error('Download error:', error);
+            }
+        }
+        
+        // Fallback: Allow individual file downloads if main button fails
+        document.querySelectorAll('.file-item').forEach((item, index) => {
+            item.style.cursor = 'pointer';
+            item.addEventListener('click', () => {
+                downloadFile(files[index].url, files[index].name);
+            });
+        });
+    </script>
+</body>
+</html>
+
